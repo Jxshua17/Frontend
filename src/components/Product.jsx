@@ -100,7 +100,7 @@ const Product = () => {
 
           <div className="product-price">
             <span style={{ fontSize: "2rem", fontWeight: "bold" }}>
-              {"=N=" + product.price}
+              <i className="bi-currency-pound"></i> {product.price}
             </span>
             <button
               className={`cart-btn ${
