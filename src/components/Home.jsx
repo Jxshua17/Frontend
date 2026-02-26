@@ -155,8 +155,8 @@ const Home = ({ selectedCategory }) => {
                         className="card-text"
                         style={{ fontWeight: "600", fontSize: "1.1rem",marginBottom:'5px' }}
                       >
-                          {/*<i className="bi-currency-dollar"></i>*/}
-                          <FaNairaSign />
+                          <i className="bi-currency-pound"></i>
+                          {/*<FaNairaSign />*/}
                         {price}
                       </h5>
                     </div>
