@@ -1,8 +1,6 @@
-# React + Vite
+# E-Commerce website Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a fork of Navin Reddy's [e-com frontend repository](https://github.com/navinreddy20/ecom-frontend-5) which i used 
+as the frontend of my [backend project](https://github.com/jxshua17/backend) which is implemented in Java using the Springboot framework.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The changes i made involved changing the currency from Rupees to Naira then to Pound.
