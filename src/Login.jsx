@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 
 const LoginForm = () => {
-    const [email, setEmail] = useState("")
+    const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
 
     const handleLogin = (e) => {
         e.preventDefault();
 
-        if (email === "admin@example.com" && password === "password123") {
+        if (username === "joshua" && password === "password") {
             setMessage("Login successful! 🎉");
         } else {
             setMessage("Invalid credentials ❌");
@@ -20,10 +20,10 @@ const LoginForm = () => {
             <h2>Login</h2>
             <form onSubmit={handleLogin} style={styles.form}>
                 <input
-                    type="email"
-                    placeholder="Email”"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     style={styles.input}
                     required
                 />
