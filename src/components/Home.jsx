@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import AppContext from "../Context/Context";
 import unplugged from "../assets/unplugged.png"
-import { FaNairaSign } from "react-icons/fa6";
 // Usage: <FaNairaSign />
 
 
