@@ -15,7 +15,7 @@ const LoginForm  = () =>  {
 
         if (username === "joshua" && password === "password") {
             setMessage("Login successful! 🎉");
-            e.navigate("/product")
+            //e.navigate("/product")
         } else {
             setMessage("Invalid credentials ❌");
         }
