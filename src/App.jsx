@@ -11,6 +11,7 @@ import UpdateProduct from "./components/UpdateProduct";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import LoginForm from "./Login.jsx";
 
 
 function App() {
@@ -45,8 +46,9 @@ function App() {
           <Route
             path="/"
             element={
-              <Home addToCart={addToCart} selectedCategory={selectedCategory}
-              />
+              /*<Home addToCart={addToCart} selectedCategory={selectedCategory}
+              />*/
+                <LoginForm />
             }
           />
           <Route path="/add_product" element={<AddProduct />} />

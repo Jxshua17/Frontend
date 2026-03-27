@@ -5,12 +5,13 @@ import "./index.css";
 import { useContext } from "react";
 import { AppProvider } from "./Context/Context.jsx";
 import LoginForm from "./Login.jsx";
+import Login from "./Login.jsx";
 // import { BrowserRouter as Router } from "react-router-dom";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <Router> */}
       <AppProvider>
-        <LoginForm />
+        <App />
       </AppProvider>
     {/* </Router> */}
   </React.StrictMode>
