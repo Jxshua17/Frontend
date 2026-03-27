@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {AppProvider} from "./Context/Context.jsx";
-import {BrowserRouter, Link, Route, Routes, useNavigate} from "react-router-dom";
+import {BrowserRouter, Link, Navigate, Route, Routes, useNavigate} from "react-router-dom";
 import App from "./App.jsx";
 import Product from "./components/Product.jsx";
 
@@ -8,18 +8,25 @@ const LoginForm  = () =>  {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
+    const navigate = useNavigate()
+    const [formData, setFormData] = useState('');
 
 
     const handleLogin = (e) => {
-        //e.preventDefault();
+        e.preventDefault();
 
         if (username === "joshua" && password === "password") {
             setMessage("Login successful! 🎉");
-            //e.navigate("/product")
+            setFormData("log in successful.")
         } else {
             setMessage("Invalid credentials ❌");
         }
     }
+    useEffect( () => {
+        if(formData){
+            navigate("/home")
+        }
+    }, [formData, navigate])
 
     return (
             <div style={styles.container}>
@@ -41,9 +48,7 @@ const LoginForm  = () =>  {
                         style={styles.input}
                         required
                     />
-                    <Link to={'/home'}>
                         <button type="submit" style={styles.button}>Login</button>
-                    </Link>
                 </form>
                 {message && <p>{message}</p>}
             </div>

@@ -51,6 +51,13 @@ function App() {
                 <LoginForm />
             }
           />
+          <Route
+              path="/home"
+              element={
+                <Home addToCart={addToCart} selectedCategory={selectedCategory}
+                />
+              }
+          />
           <Route path="/add_product" element={<AddProduct />} />
           <Route path="/product" element={<Product  />} />
           <Route path="product/:id" element={<Product  />} />
