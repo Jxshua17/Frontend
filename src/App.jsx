@@ -44,7 +44,7 @@ function App() {
          />
         <Routes>
           <Route
-            path="/"
+            path="/login"
             element={
               /*<Home addToCart={addToCart} selectedCategory={selectedCategory}
               />*/
