@@ -46,8 +46,12 @@ function App() {
           <Route
             path="/login"
             element={
-              /*<Home addToCart={addToCart} selectedCategory={selectedCategory}
-              />*/
+                <LoginForm />
+            }
+          />
+          <Route
+            path="/"
+            element={
                 <LoginForm />
             }
           />
