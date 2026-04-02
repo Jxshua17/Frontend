@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import AppContext from "../Context/Context";
 import unplugged from "../assets/unplugged.png"
+import {toast, ToastContainer} from "react-toastify";
 // Usage: <FaNairaSign />
 
 
@@ -10,6 +11,10 @@ const Home = ({ selectedCategory }) => {
   const { data, isError, addToCart, refreshData } = useContext(AppContext);
   const [products, setProducts] = useState([]);
   const [isDataFetched, setIsDataFetched] = useState(false);
+
+  toast.success("Login successful! 🎉",{
+      toastId:"success1"
+  })
 
   useEffect(() => {
     if (!isDataFetched) {
@@ -176,6 +181,7 @@ const Home = ({ selectedCategory }) => {
             );
           })
         )}
+          <ToastContainer />
       </div>
     </>
   );

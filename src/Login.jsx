@@ -4,6 +4,8 @@ import {BrowserRouter, Link, Navigate, Route, Routes, useNavigate} from "react-r
 import App from "./App.jsx";
 import Product from "./components/Product.jsx";
 import axios from "./axios.jsx";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginForm = () => {
     const [username, setUsername] = useState("")
@@ -15,6 +17,7 @@ const LoginForm = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        toast("Invalid credentials ❌");
 
         try {
             const response = await axios.post("/login", {
@@ -22,10 +25,12 @@ const LoginForm = () => {
                 password: password}, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
-                }});
+                },
+            })
+
             console.log(response.data);
             if (response.data === true) {
-                setMessage("Login successful! 🎉");
+                setMessage("Login successful! 🎉")
                 setFormData("login successful.")
             } else {
                 setMessage("Invalid credentials ❌");
@@ -65,19 +70,10 @@ const LoginForm = () => {
                 <button type="submit" style={styles.button}>Login</button>
             </form>
             {message && <p>{message}</p>}
+            <ToastContainer/>
         </div>
     );
 }
-
-/*return (
-    <AppProvider>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/home" element={<App />} />
-            </Routes>
-        </BrowserRouter>
-    </AppProvider>
-);*/
 
 const styles = {
     container: {
