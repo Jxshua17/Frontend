@@ -79,10 +79,9 @@ const styles = {
     container: {
         maxWidth: "400px",
         margin: "100px auto",
-        padding: "30px",
+        padding: "60px",
         boxShadow: "0 0 10px #ccc",
-        borderRadius: "8px",
-        textAlign: "center",
+        borderRadius: "8px"
     },
     form: {
         display: "flex",
@@ -95,9 +94,10 @@ const styles = {
     },
     button: {
         padding: "10px",
-        fontSize: "16px",
-        background: "“#4CAF50",
-        color: "#fff",
+        fontSize: "20px",
+        fontWeight:'600',
+        background: "#51e008",
+        color: "#ffffff",
         border: "none",
         cursor: "pointer"
     }
