@@ -69,7 +69,7 @@ const Home = ({ selectedCategory }) => {
 
   if (isError) {
       return (
-          <div style={styles.container}>
+          <div className="theme-btn" style={styles.container}>
               <h1>You do not have access to this resource.</h1>
               <button onClick={handleRedirect} style={styles.button}>Log in!</button>
           </div>
