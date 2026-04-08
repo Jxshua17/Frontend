@@ -49,7 +49,7 @@ const LoginForm = () => {
     }, [formData, navigate])
 
     return (
-        <div style={styles.container}>
+        <div className="theme-btn" style={styles.container}>
             <h2>Login</h2>
             <form onSubmit={handleLogin} style={styles.form}>
                 <input
