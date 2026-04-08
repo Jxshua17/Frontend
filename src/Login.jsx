@@ -32,6 +32,7 @@ const LoginForm = () => {
             if (response.data === true) {
                 setMessage("Login successful! 🎉")
                 setFormData("login successful.")
+                console.log("logging in here")
             } else {
                 setMessage("Invalid credentials ❌");
             }

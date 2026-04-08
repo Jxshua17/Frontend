@@ -1,20 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import {Link, Route, Routes, useNavigate} from "react-router-dom";
 import axios from "axios";
 import AppContext from "../Context/Context";
 import unplugged from "../assets/unplugged.png"
 import {toast, ToastContainer} from "react-toastify";
+import LoginForm from "../Login.jsx";
 // Usage: <FaNairaSign />
 
-
+console.log("did it get here? 101")
 const Home = ({ selectedCategory }) => {
   const { data, isError, addToCart, refreshData } = useContext(AppContext);
   const [products, setProducts] = useState([]);
   const [isDataFetched, setIsDataFetched] = useState(false);
+  const navigate = useNavigate();
+    console.log("did it get here? 102")
 
   toast.success("Login successful! 🎉",{
       toastId:"success1"
   })
+
+    console.log("did it get here? 103")
 
   useEffect(() => {
     if (!isDataFetched) {
@@ -26,7 +31,9 @@ const Home = ({ selectedCategory }) => {
   useEffect(() => {
     if (data && data.length > 0) {
       const fetchImagesAndUpdateProducts = async () => {
-        const updatedProducts = await Promise.all(
+
+          console.log("did it get here? 104")
+          const updatedProducts = await Promise.all(
           data.map(async (product) => {
             try {
               const response = await axios.get(
@@ -56,12 +63,17 @@ const Home = ({ selectedCategory }) => {
     ? products.filter((product) => product.category === selectedCategory)
     : products;
 
+    const handleRedirect = () => {
+        navigate('/login');
+    };
+
   if (isError) {
-    return (
-      <h2 className="text-center" style={{ padding: "18rem" }}>
-      <img src={unplugged} alt="Error" style={{ width: '100px', height: '100px' }}/>
-      </h2>
-    );
+      return (
+          <div style={styles.container}>
+              <h1>You do not have access to this resource.</h1>
+              <button onClick={handleRedirect} style={styles.button}>Log in!</button>
+          </div>
+      );
   }
   return (
     <>
@@ -187,4 +199,28 @@ const Home = ({ selectedCategory }) => {
   );
 };
 
+
+const styles = {
+    container:{
+        maxWidth: "400px",
+        margin: "100px auto",
+        padding: "60px",
+        boxShadow: "0 0 10px #ccc",
+        borderRadius: "8px",
+    },
+    button: {
+        padding: "10px",
+        fontSize: "20px",
+        fontWeight:'600',
+        background: "#51e008",
+        color: "#ffffff",
+        border: "none",
+        cursor: "pointer"
+    },
+    align:{
+        horizontalAlign:"200px",
+        verticalAlign:"200px"
+    }
+
+}
 export default Home;
