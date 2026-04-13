@@ -29,7 +29,14 @@ const LoginForm = () => {
             })
 
             console.log(response.data);
-            if (response.data === true) {
+
+            console.log(response.data[0])
+            console.log(response.data[1])
+
+            localStorage.setItem("token", response.data[1]);
+            axios.defaults.headers.common["Authorization"] = `Bearer ${response.data[1]}`;
+
+            if (response.data[0] === true) {
                 setMessage("Login successful! 🎉")
                 setFormData("login successful.")
                 console.log("logging in here")

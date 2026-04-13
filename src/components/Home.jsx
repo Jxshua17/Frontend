@@ -5,7 +5,7 @@ import AppContext from "../Context/Context";
 import unplugged from "../assets/unplugged.png"
 import {toast, ToastContainer} from "react-toastify";
 import LoginForm from "../Login.jsx";
-// Usage: <FaNairaSign />
+
 
 console.log("did it get here? 101")
 const Home = ({ selectedCategory }) => {
@@ -15,9 +15,7 @@ const Home = ({ selectedCategory }) => {
   const navigate = useNavigate();
     console.log("did it get here? 102")
 
-  toast.success("Login successful! 🎉",{
-      toastId:"success1"
-  })
+
 
     console.log("did it get here? 103")
 
@@ -29,7 +27,28 @@ const Home = ({ selectedCategory }) => {
   }, [refreshData, isDataFetched]);
 
   useEffect(() => {
-    if (data && data.length > 0) {
+
+      const token = localStorage.getItem("token");
+
+
+      console.log(token)
+
+      axios.get(
+          "http://localhost:8080/api/products",
+          {
+              headers : { 'Authorization' : `Bearer ${token}`}
+          }
+      ).then(response => {
+          console.log("successful!", response.data)
+      }).catch( error => {
+          console.log("there is an error", error)
+      });
+
+    if ((data && data.length > 0)) {
+
+        toast.success("Login successful! 🎉",{
+            toastId:"success1"
+        })
       const fetchImagesAndUpdateProducts = async () => {
 
           console.log("did it get here? 104")
@@ -38,7 +57,10 @@ const Home = ({ selectedCategory }) => {
             try {
               const response = await axios.get(
                 `http://localhost:8080/api/product/${product.id}/image`,
-                { responseType: "blob" }
+                {
+                    responseType: "blob",
+                    headers : { 'Authorization' : `Bearer ${token}`}
+                }
               );
               const imageUrl = URL.createObjectURL(response.data);
               return { ...product, imageUrl };
@@ -63,18 +85,22 @@ const Home = ({ selectedCategory }) => {
     ? products.filter((product) => product.category === selectedCategory)
     : products;
 
-    const handleRedirect = () => {
-        navigate('/login');
-    };
 
-  if (isError) {
+ /* useEffect( () => {
+      if (isError){
+          navigate("/login")
+      }
+  }, [isError, navigate])*/
+
+  /*if (isError) {
       return (
           <div className="theme-btn" style={styles.container}>
               <h1>You do not have access to this resource.</h1>
               <button onClick={handleRedirect} style={styles.button}>Log in!</button>
           </div>
       );
-  }
+  }*/
+
   return (
     <>
       <div
