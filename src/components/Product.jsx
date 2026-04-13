@@ -32,9 +32,14 @@ const Product = () => {
     };
 
     const fetchImage = async () => {
+      const token = localStorage.getItem("token");
       const response = await axios.get(
         `http://localhost:8080/api/product/${id}/image`,
-        { responseType: "blob" }
+        {
+          responseType: "blob",
+          headers : { 'Authorization' : `Bearer ${token}`}
+
+        }
       );
       setImageUrl(URL.createObjectURL(response.data));
     };
