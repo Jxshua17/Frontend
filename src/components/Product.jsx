@@ -14,9 +14,13 @@ const Product = () => {
 
   useEffect(() => {
     const fetchProduct = async () => {
+      const token = localStorage.getItem("token");
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/product/${id}`
+          `http://localhost:8080/api/product/${id}`,
+            {
+              headers : { 'Authorization' : `Bearer ${token}`}
+            }
         );
         setProduct(response.data);
         if (response.data.imageName) {
