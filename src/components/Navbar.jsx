@@ -21,8 +21,14 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
   }, []);
 
   const fetchData = async (value) => {
+    const token = localStorage.getItem("token");
     try {
-      const response = await axios.get("http://localhost:8080/api/products");
+      const response = await axios.get(
+          "http://localhost:8080/api/products",
+          {
+            headers : { 'Authorization' : `Bearer ${token}`}
+          }
+          );
       setSearchResults(response.data);
       console.log(response.data);
     } catch (error) {
@@ -102,6 +108,9 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
     "Toys",
     "Fashion",
   ];
+
+  const token = localStorage.getItem("token");
+
   return (
     <>
       <header>

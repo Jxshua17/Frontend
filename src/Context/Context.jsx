@@ -44,8 +44,14 @@ export const AppProvider = ({ children }) => {
   };
 
   const refreshData = async () => {
+    const token = localStorage.getItem("token")
     try {
-      const response = await axios.get("/products");
+      const response = await axios.get("/products",
+          {
+            headers : {
+              'Authorization' : `Bearer ${token}`
+            }
+          });
       setData(response.data);
     } catch (error) {
       setIsError(error.message);
