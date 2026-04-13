@@ -109,7 +109,7 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
     "Fashion",
   ];
 
-  const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
 
   return (
     <>
@@ -173,6 +173,11 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
 
                 <li className="nav-item"></li>
               </ul>
+
+              <p>
+                <h2 className="nav-item">Hello, {username}</h2>
+              </p>
+
               <button className="theme-btn" onClick={() => toggleTheme()}>
                 {theme === "dark-theme" ? (
                   <i className="bi bi-moon-fill"></i>
@@ -235,5 +240,6 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
     </>
   );
 };
+
 
 export default Navbar;
